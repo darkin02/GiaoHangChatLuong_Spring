@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/Layouts">
-<!--    <excludes>-->
-<!--        <pattern>/account/*</pattern>-->
+    <excludes>
+        <pattern>/admin/*</pattern>
 <!--        <pattern>/lythuyet/baihoc/*</pattern>-->
-<!--    </excludes>-->
+    </excludes>
 
     <decorator name="user" page="User/LayoutUser.jsp">
         <pattern>/*</pattern>
