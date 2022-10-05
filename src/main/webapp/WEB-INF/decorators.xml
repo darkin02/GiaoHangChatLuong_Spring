@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/Layouts">
+<!--    <excludes>-->
+<!--        <pattern>/account/*</pattern>-->
+<!--        <pattern>/lythuyet/baihoc/*</pattern>-->
+<!--    </excludes>-->
+
+    <decorator name="user" page="User/LayoutUser.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+    <decorator name="login" page="Login/LayoutLogin.jsp">
+        <pattern>/login/*</pattern>
+    </decorator>
+<!--    <decorator name="admin" page="admin.jsp">-->
+<!--        <pattern>/admin*</pattern>-->
+<!--    </decorator>-->
+
+</decorators>

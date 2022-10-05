@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<p style="color: red; font-weight: bold" th:text="'Thông tin khách hàng: ' + ${name} "></p>
+<p th:text="'Điện Thoại: ' + ${Phone} "></p>
+<p th:text="'Email: ' + ${Email} "></p>
+<p th:text="'Địa Chỉ: ' + ${Address} "></p>
+<p th:text="'Mã xác nhận là: ' + ${SMS} "></p>
+</body>
+</html>
