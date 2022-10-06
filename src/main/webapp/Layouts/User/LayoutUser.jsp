@@ -199,7 +199,6 @@
                 title.addClass('Title');
             }
         });
-
     });
 </script>
 <script>
