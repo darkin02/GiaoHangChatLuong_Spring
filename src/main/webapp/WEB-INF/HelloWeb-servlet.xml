@@ -26,8 +26,7 @@
                 <prop key="mail.smtp.starttls.enable">true</prop>
                 <prop key="mail.smtp.test-connection">false</prop>
             </props>
-        </property>
-    </bean>
+        </property>    </bean>
     <mvc:resources mapping="/**" location="/" />
     <mvc:resources mapping="/Resources/**" location="/Resources/" />
     <mvc:annotation-driven/>
