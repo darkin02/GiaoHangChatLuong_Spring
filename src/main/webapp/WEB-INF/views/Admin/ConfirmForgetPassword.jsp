@@ -70,76 +70,44 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Đăng Nhập 👋</h4>
-                        <p class="mb-4">Vui lòng đăng nhập vào tài khoản của bạn</p>
-<%--                        @if (TempData["AlretMessage"] != null)--%>
-<%--                        {--%>
-<%--                        <div id="AlertBox" class="alert @TempData["AlretType"] hide">--%>
-<%--                        @TempData["AlretMessage"]--%>
-<%--                    </div>}--%>
+                        <h4 class="mb-2">Quên mật khẩu 👋</h4>
+                        <p class="mb-4">Vui lòng nhập mã xác nhận trong Email của bạn</p>
+                        <c:if test="${message ne null}">
+                        <div id="AlertBox" class="alert">
+                            ${message}
+                    </div></c:if>
                     <form id="formAuthentication" class="mb-3" method="post">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Tên tài khoản</label>
-                            <input type="text" class="form-control" id="email" name="UserName" placeholder="Tên Tài Khoản" autofocus />
-                        </div>
-                        <div class="mb-3 form-password-toggle">
-                            <div class="d-flex justify-content-between">
-                                <label class="form-label" for="password">Mật khẩu</label>
-                                <a href="<c:url value="forgetpassword"/>">
-                                    <small>Quên mật khẩu?</small>
-                                </a>
-                            </div>
-                            <div class="input-group input-group-merge">
-                                <input type="password"
-                                       id="password"
-                                       class="form-control"
-                                       name="Password"
-                                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                       aria-describedby="password" />
-                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                            </div>
+                            <label for="email" class="form-label">Mã xác nhận</label>
+                            <input type="text" class="form-control" id="email" name="sms" placeholder="Mã xác nhận" autofocus />
                         </div>
                         <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember-me" name="RememberMe" />
-                                <label class="form-check-label" for="remember-me"> Ghi nhớ </label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Đăng Nhập</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">Xác nhận</button>
                         </div>
                     </form>
-
-                    <p class="text-center">
-                        <span>Chưa có tài khoản?</span>
-                        <a href="<c:url value="register"/>">
-                        <span>Đăng Ký</span>
-                        </a>
-                    </p>
                 </div>
             </div>
             <!-- /Register -->
         </div>
     </div>
 </div>
+    <!-- / Content -->
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="<c:url value='/Resources/Admin/assets/vendor/libs/jquery/jquery.js'/>"></script>
+    <script src="<c:url value='/Resources/Admin/assets/vendor/libs/popper/popper.js'/>"></script>
+    <script src="<c:url value='/Resources/Admin/assets/vendor/js/bootstrap.js'/>"></script>
+    <script src="<c:url value='/Resources/Admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js'/>"></script>
 
-<!-- / Content -->
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-<script src="<c:url value='/Resources/Admin/assets/vendor/libs/jquery/jquery.js'/>"></script>
-<script src="<c:url value='/Resources/Admin/assets/vendor/libs/popper/popper.js'/>"></script>
-<script src="<c:url value='/Resources/Admin/assets/vendor/js/bootstrap.js'/>"></script>
-<script src="<c:url value='/Resources/Admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js'/>"></script>
+    <script src="<c:url value='/Resources/Admin/assets/vendor/js/menu.js'/>"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!-- Main JS -->
+    <script src="<c:url value='/Resources/Admin/assets/js/main.js'/>"></script>
 
-<script src="<c:url value='/Resources/Admin/assets/vendor/js/menu.js'/>"></script>
-<!-- endbuild -->
-<!-- Vendors JS -->
-<!-- Main JS -->
-<script src="<c:url value='/Resources/Admin/assets/js/main.js'/>"></script>
-
-<!-- Page JS -->
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Page JS -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </div>
 </body>
 </html>

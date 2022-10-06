@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/Layouts">
     <excludes>
-        <pattern>/admin/*</pattern>
-<!--        <pattern>/lythuyet/baihoc/*</pattern>-->
+        <pattern>/admin/login</pattern>
+        <pattern>/admin/register</pattern>
+        <pattern>/admin/forgetpassword</pattern>
+        <pattern>/admin/confirmforgetpassword</pattern>
+        <pattern>/admin/newpassword</pattern>
+
     </excludes>
+
+    <decorator name="admin" page="Admin/LayoutAdmin.jsp">
+        <pattern>/admin/*</pattern>
+    </decorator>
 
     <decorator name="user" page="User/LayoutUser.jsp">
         <pattern>/*</pattern>

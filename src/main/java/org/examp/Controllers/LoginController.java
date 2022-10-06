@@ -44,7 +44,7 @@ public class LoginController {
             helper.setFrom("giaohangchatluongvn@gmail.com");
             helper.setTo(email);
             helper.setSubject("Forgot Password");
-            helper.setText(thymeleafService.getContent(dangKy),true);
+            helper.setText(thymeleafService.getContent(dangKy,"ConfimNewUser"),true);
             mailSender.send(message);
         }catch (Exception e){
             System.out.println(e.getMessage());
