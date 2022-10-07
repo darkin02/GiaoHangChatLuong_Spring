@@ -1,16 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ACER
-  Date: 06/10/2022
-  Time: 4:20 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/taglib.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 
-</body>
-</html>
+<h2 class="header-elements">CHI TIẾT THÔNG TIN NHÂN VIÊN</h2>
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+</style>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <p><strong>Họ tên: </strong><label>${TenNV}</label></p>
+        <p><strong>Ngày sinh: </strong><label>${SDT}</label></p>
+        <p><strong>Địa chỉ: </strong><label>${DiaChi}</label></p>
+        <p><strong>Chức vụ: </strong><label>${ChucVu}</label></p>
+        <p><strong>Bậc lương: </strong><label>${BacLuong}</label></p>
+        <p><strong>Mã phòng ban: </strong><label>${MaPB}</label></p>
+        <p><strong>SDT: </strong><label>${SDT}</label></p>
+        <p><strong>Giới tính: </strong><label>${GioiTinh}</label></p>
+        <p><strong>Mã nhà kho: </strong><label>${MaNK}</label></p>
+
+
+    </dl>
+</div>
+
+<p class="actionDesign">
+    <a href="<c:url value="editstaff/${model.id}"/>">
+        <i class="btn btn-info btn-sm">Sửa</i>
+    </a>
+    <a href="<c:url value="indexstaff"/>">
+        <i class="btn btn-info btn-sm">Trở lại</i>
+    </a>
+</p>
+
+<style>
+    .actionDesign {
+        margin-left: 20px;
+    }
+</style>
