@@ -1,7 +1,10 @@
 package org.examp.Controllers;
 
+import org.examp.Entitys.Khachhang;
 import org.examp.Model.DangKy;
+import org.examp.Service.IKhachHangService;
 import org.examp.Service.ThymeleafService;
+import org.examp.Service.impl.KhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -23,6 +27,9 @@ public class AdminController {
     JavaMailSender mailSender;
     @Autowired
     ThymeleafService thymeleafService;
+
+    @Autowired
+    private IKhachHangService khachHangService;
     /* Dang nhap */
     @GetMapping("/login")
     public ModelAndView printLogin(){
@@ -130,6 +137,13 @@ public class AdminController {
     }
 
     /* Customer */
+    @GetMapping("/indexcustomer")
+    public ModelAndView printIndexCustomer(){
+        List<Khachhang> list = khachHangService.getAll();
+        ModelAndView khachHang = new ModelAndView("Admin/IndexCustomer");
+        khachHang.addObject("list", list);
+        return khachHang;
+    }
 
     @GetMapping("/createcustomer")
     public String printCreateCustomer(){

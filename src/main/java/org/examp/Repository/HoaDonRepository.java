@@ -1,6 +1,9 @@
 package org.examp.Repository;
-import org.examp.Entitys.User;
+
+import org.examp.Entitys.Hoadonvanchuyen;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {}
+public interface HoaDonRepository extends JpaRepository<Hoadonvanchuyen, String> {}
+
