@@ -8,7 +8,7 @@
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
-            <strong>Tên khách nhận</strong>
+            <strong>Tên kháchsnhận</strong>
             <div class="col-md-10">
                 <input type="text" class="form-control" id="TenKN" name="TenKN" placeholder="Tên khách nhận" autofocus />
             </div>
