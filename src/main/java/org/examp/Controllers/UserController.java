@@ -1,9 +1,6 @@
 package org.examp.Controllers;
 
-import org.examp.Entitys.User;
-import org.examp.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,16 +11,10 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @Autowired
-    private IUserService userService;
 
     @RequestMapping(value = "/")
     public ModelAndView printIndex(Model model){
-        // add attribute to load modelMap
-        List<User> ls = userService.getAllUsers();
-        model.addAttribute("ls",
-                ls);
-        // return the name of the file to be loaded "user.jsp"
+
         ModelAndView mav = new ModelAndView("User/index");
         return mav;
     }
@@ -57,9 +48,5 @@ public class UserController {
     public ModelAndView printSingle(Model model){
         ModelAndView mav = new ModelAndView("User/single");
         return mav;
-    }
-    @GetMapping("/get-all-user")
-    public List<User> getAll(){
-        return userService.getAllUsers();
     }
 }
