@@ -1,16 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ACER
-  Date: 06/10/2022
-  Time: 4:20 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/taglib.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 
-</body>
-</html>
+
+<h2 class="header-elements">CHI TIẾT THÔNG TIN NHÀ KHO</h2>
+<style>
+    .header-elements {
+        margin: 20px;
+    }
+</style>
+
+<div>
+    <hr/>
+    <dl class="dl-horizontal">
+        <p><strong>Tên nhà kho: </strong><label>${TenNK}</label></p>
+        <p><strong>Diện tích: </strong><label>${DienTich}</label></p>
+        <p><strong>Sức chứa: </strong><label>${SucChua}</label></p>
+        <p><strong>Địa chỉ: </strong><label>${DiaChi}</label></p>
+        <p><strong>Khu vực: </strong><label>${MaKV}</label></p>
+    </dl>
+</div>
+<p class="actionDesign">
+    <a href="<c:url value="editwarehouse/${model.id}"/>">
+        <i class="btn btn-info btn-sm">Sửa</i>
+    </a>
+    <a href="<c:url value="indexwarehouse"/>">
+        <i class="btn btn-info btn-sm">Trở lại</i>
+    </a>
+</p>
+
+<style>
+    .actionDesign {
+        margin-left: 20px;
+    }
+</style>
