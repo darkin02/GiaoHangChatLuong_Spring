@@ -7,7 +7,17 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -18,6 +28,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "tuyenduong")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Tuyenduong.findAll", query = "SELECT t FROM Tuyenduong t")
+    , @NamedQuery(name = "Tuyenduong.findByMaTD", query = "SELECT t FROM Tuyenduong t WHERE t.maTD = :maTD")
+    , @NamedQuery(name = "Tuyenduong.findByTenTD", query = "SELECT t FROM Tuyenduong t WHERE t.tenTD = :tenTD")
+    , @NamedQuery(name = "Tuyenduong.findByThoiGian", query = "SELECT t FROM Tuyenduong t WHERE t.thoiGian = :thoiGian")
+    , @NamedQuery(name = "Tuyenduong.findByMaKhoBD", query = "SELECT t FROM Tuyenduong t WHERE t.maKhoBD = :maKhoBD")
+    , @NamedQuery(name = "Tuyenduong.findByMaKhoKT", query = "SELECT t FROM Tuyenduong t WHERE t.maKhoKT = :maKhoKT")})
 public class Tuyenduong implements Serializable {
 
     private static final long serialVersionUID = 1L;

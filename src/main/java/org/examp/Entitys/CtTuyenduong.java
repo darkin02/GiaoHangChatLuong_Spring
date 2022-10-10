@@ -6,7 +6,15 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,6 +24,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "ct_tuyenduong")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "CtTuyenduong.findAll", query = "SELECT c FROM CtTuyenduong c")
+    , @NamedQuery(name = "CtTuyenduong.findByMaCTTD", query = "SELECT c FROM CtTuyenduong c WHERE c.maCTTD = :maCTTD")
+    , @NamedQuery(name = "CtTuyenduong.findByMaKhoDen", query = "SELECT c FROM CtTuyenduong c WHERE c.maKhoDen = :maKhoDen")})
 public class CtTuyenduong implements Serializable {
 
     private static final long serialVersionUID = 1L;

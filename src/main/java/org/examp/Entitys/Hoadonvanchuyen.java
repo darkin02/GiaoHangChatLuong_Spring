@@ -9,7 +9,18 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -20,6 +31,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "hoadonvanchuyen")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Hoadonvanchuyen.findAll", query = "SELECT h FROM Hoadonvanchuyen h")
+    , @NamedQuery(name = "Hoadonvanchuyen.findBySoHD", query = "SELECT h FROM Hoadonvanchuyen h WHERE h.soHD = :soHD")
+    , @NamedQuery(name = "Hoadonvanchuyen.findByNgayLapHD", query = "SELECT h FROM Hoadonvanchuyen h WHERE h.ngayLapHD = :ngayLapHD")
+    , @NamedQuery(name = "Hoadonvanchuyen.findByTongTien", query = "SELECT h FROM Hoadonvanchuyen h WHERE h.tongTien = :tongTien")
+    , @NamedQuery(name = "Hoadonvanchuyen.findByTienVC", query = "SELECT h FROM Hoadonvanchuyen h WHERE h.tienVC = :tienVC")
+    , @NamedQuery(name = "Hoadonvanchuyen.findByCod", query = "SELECT h FROM Hoadonvanchuyen h WHERE h.cod = :cod")})
 public class Hoadonvanchuyen implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -7,7 +7,15 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -17,6 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "shop")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Shop.findAll", query = "SELECT s FROM Shop s")
+    , @NamedQuery(name = "Shop.findByMaShop", query = "SELECT s FROM Shop s WHERE s.maShop = :maShop")
+    , @NamedQuery(name = "Shop.findByTenShop", query = "SELECT s FROM Shop s WHERE s.tenShop = :tenShop")
+    , @NamedQuery(name = "Shop.findByNgayDK", query = "SELECT s FROM Shop s WHERE s.ngayDK = :ngayDK")
+    , @NamedQuery(name = "Shop.findByTkNganHang", query = "SELECT s FROM Shop s WHERE s.tkNganHang = :tkNganHang")
+    , @NamedQuery(name = "Shop.findByMaKH", query = "SELECT s FROM Shop s WHERE s.maKH = :maKH")})
 public class Shop implements Serializable {
 
     private static final long serialVersionUID = 1L;

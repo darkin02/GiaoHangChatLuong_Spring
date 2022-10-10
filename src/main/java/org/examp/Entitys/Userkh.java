@@ -6,7 +6,15 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,6 +24,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "userkh")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Userkh.findAll", query = "SELECT u FROM Userkh u")
+    , @NamedQuery(name = "Userkh.findBySdt", query = "SELECT u FROM Userkh u WHERE u.sdt = :sdt")
+    , @NamedQuery(name = "Userkh.findByMatKhau", query = "SELECT u FROM Userkh u WHERE u.matKhau = :matKhau")
+    , @NamedQuery(name = "Userkh.findByEmail", query = "SELECT u FROM Userkh u WHERE u.email = :email")
+    , @NamedQuery(name = "Userkh.findByUserName", query = "SELECT u FROM Userkh u WHERE u.userName = :userName")
+    , @NamedQuery(name = "Userkh.findByAuthkey", query = "SELECT u FROM Userkh u WHERE u.authkey = :authkey")})
 public class Userkh implements Serializable {
 
     private static final long serialVersionUID = 1L;

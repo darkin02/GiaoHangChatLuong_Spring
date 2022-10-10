@@ -41,9 +41,6 @@ public class AdminController {
     private ILoaiHHService loaiHHService;
 
     @Autowired
-    private IHangHoaService hangHoaService;
-
-    @Autowired
     private ITaiKhoanService taiKhoanService;
 
     @Autowired
@@ -262,26 +259,6 @@ public class AdminController {
     @PostMapping("/createdepartment")
     public String printCreateDepartment(HttpServletRequest request,HttpSession session, Model model){
         return "Admin/CreateDepartment";
-    }
-
-    /* Goods */
-
-    @GetMapping("/creategoods")
-    public String printCreateGoods(Model model){
-        List<Loaihh> listLHH = loaiHHService.getAll();
-        model.addAttribute("listLHH",listLHH);
-        return "Admin/CreateGoods";
-    }
-
-    @PostMapping("/creategoods")
-    public String printCreateGoods(HttpServletRequest request,HttpSession session, Model model, @ModelAttribute Hanghoa hanghoa){
-        hanghoa.setMaHH("temp");
-        hanghoa.setMaLHH(loaiHHService.getOne(hanghoa.getMaLHH().getMaLHH()));
-        Hanghoa hh = hangHoaService.getName(hanghoa.getTenHH());
-       if(hh == null){
-           hangHoaService.Add(hanghoa);
-       }
-        return "Admin/CreateGoods";
     }
 
     /* Recipients */

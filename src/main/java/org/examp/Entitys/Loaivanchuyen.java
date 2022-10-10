@@ -7,7 +7,14 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -18,6 +25,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "loaivanchuyen")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Loaivanchuyen.findAll", query = "SELECT l FROM Loaivanchuyen l")
+    , @NamedQuery(name = "Loaivanchuyen.findByMaLVC", query = "SELECT l FROM Loaivanchuyen l WHERE l.maLVC = :maLVC")
+    , @NamedQuery(name = "Loaivanchuyen.findByTenLVC", query = "SELECT l FROM Loaivanchuyen l WHERE l.tenLVC = :tenLVC")
+    , @NamedQuery(name = "Loaivanchuyen.findByGia", query = "SELECT l FROM Loaivanchuyen l WHERE l.gia = :gia")})
 public class Loaivanchuyen implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -7,7 +7,15 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -17,6 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "ctvanchuyen")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Ctvanchuyen.findAll", query = "SELECT c FROM Ctvanchuyen c")
+    , @NamedQuery(name = "Ctvanchuyen.findByMaCTVC", query = "SELECT c FROM Ctvanchuyen c WHERE c.maCTVC = :maCTVC")
+    , @NamedQuery(name = "Ctvanchuyen.findBySoHD", query = "SELECT c FROM Ctvanchuyen c WHERE c.soHD = :soHD")
+    , @NamedQuery(name = "Ctvanchuyen.findByMaNK", query = "SELECT c FROM Ctvanchuyen c WHERE c.maNK = :maNK")
+    , @NamedQuery(name = "Ctvanchuyen.findByNgayNhapKho", query = "SELECT c FROM Ctvanchuyen c WHERE c.ngayNhapKho = :ngayNhapKho")
+    , @NamedQuery(name = "Ctvanchuyen.findByNgayXuatKho", query = "SELECT c FROM Ctvanchuyen c WHERE c.ngayXuatKho = :ngayXuatKho")})
 public class Ctvanchuyen implements Serializable {
 
     private static final long serialVersionUID = 1L;

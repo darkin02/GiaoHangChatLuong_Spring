@@ -130,6 +130,10 @@ public class DangKy {
         return TenKH;
     }
 
+    public String getFullAddress(DangKy dangKy){
+        return dangKy.getDiaChi()+", " + dangKy.getLs_ward() + ", " +dangKy.getLs_district() +", "+dangKy.getLs_province();
+    }
+
     public void setTenKH(String tenKH) {
         TenKH = tenKH;
     }

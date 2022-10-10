@@ -6,10 +6,15 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.*;
+import java.math.BigDecimal;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -18,6 +23,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "loaihh")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Loaihh.findAll", query = "SELECT l FROM Loaihh l")
+    , @NamedQuery(name = "Loaihh.findByMaLHH", query = "SELECT l FROM Loaihh l WHERE l.maLHH = :maLHH")
+    , @NamedQuery(name = "Loaihh.findByTenLHH", query = "SELECT l FROM Loaihh l WHERE l.tenLHH = :tenLHH")
+    , @NamedQuery(name = "Loaihh.findByPhuThu", query = "SELECT l FROM Loaihh l WHERE l.phuThu = :phuThu")})
 public class Loaihh implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,8 +38,9 @@ public class Loaihh implements Serializable {
     @Basic(optional = false)
     @Column(name = "TenLHH")
     private String tenLHH;
-    @OneToMany(mappedBy = "maLHH")
-    private Collection<Hanghoa> hanghoaCollection;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "PhuThu")
+    private BigDecimal phuThu;
 
     public Loaihh() {
     }
@@ -59,13 +70,12 @@ public class Loaihh implements Serializable {
         this.tenLHH = tenLHH;
     }
 
-    @XmlTransient
-    public Collection<Hanghoa> getHanghoaCollection() {
-        return hanghoaCollection;
+    public BigDecimal getPhuThu() {
+        return phuThu;
     }
 
-    public void setHanghoaCollection(Collection<Hanghoa> hanghoaCollection) {
-        this.hanghoaCollection = hanghoaCollection;
+    public void setPhuThu(BigDecimal phuThu) {
+        this.phuThu = phuThu;
     }
 
     @Override

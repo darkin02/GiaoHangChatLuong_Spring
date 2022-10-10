@@ -25,4 +25,9 @@ public class UserKhService implements IUserKhService {
     public Userkh getOneBySdt(String sdt) {
         return userKHRepository.findFirstBySdt(sdt);
     }
+
+    @Override
+    public void Add(Userkh userkh) {
+        userKHRepository.save(userkh);
+    }
 }

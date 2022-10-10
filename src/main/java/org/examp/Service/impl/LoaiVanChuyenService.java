@@ -1,8 +1,6 @@
 package org.examp.Service.impl;
 
-import org.examp.Entitys.Khachhang;
 import org.examp.Entitys.Loaivanchuyen;
-import org.examp.Repository.KhachHangRepository;
 import org.examp.Repository.LoaiVanChuyenRepository;
 import org.examp.Service.ILoaiVanChuyenService;
 import org.springframework.beans.factory.annotation.Autowired;

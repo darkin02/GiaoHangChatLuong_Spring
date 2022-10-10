@@ -6,7 +6,13 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,6 +22,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "khuvuc")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Khuvuc.findAll", query = "SELECT k FROM Khuvuc k")
+    , @NamedQuery(name = "Khuvuc.findByMaKV", query = "SELECT k FROM Khuvuc k WHERE k.maKV = :maKV")
+    , @NamedQuery(name = "Khuvuc.findByTenKV", query = "SELECT k FROM Khuvuc k WHERE k.tenKV = :tenKV")
+    , @NamedQuery(name = "Khuvuc.findBySoNhaKho", query = "SELECT k FROM Khuvuc k WHERE k.soNhaKho = :soNhaKho")})
 public class Khuvuc implements Serializable {
 
     private static final long serialVersionUID = 1L;

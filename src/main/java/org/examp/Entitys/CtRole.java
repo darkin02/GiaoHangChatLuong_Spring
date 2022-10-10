@@ -6,7 +6,15 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,6 +24,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "ct_role")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "CtRole.findAll", query = "SELECT c FROM CtRole c")
+    , @NamedQuery(name = "CtRole.findByMaCTRole", query = "SELECT c FROM CtRole c WHERE c.maCTRole = :maCTRole")
+    , @NamedQuery(name = "CtRole.findByTenTK", query = "SELECT c FROM CtRole c WHERE c.tenTK = :tenTK")
+    , @NamedQuery(name = "CtRole.findByIDRole", query = "SELECT c FROM CtRole c WHERE c.iDRole = :iDRole")})
 public class CtRole implements Serializable {
 
     private static final long serialVersionUID = 1L;

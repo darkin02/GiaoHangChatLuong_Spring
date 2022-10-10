@@ -7,7 +7,14 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -15,10 +22,16 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author ACER
  */
-
+@Entity
 @Table(name = "khachhang")
 @XmlRootElement
-@Entity
+@NamedQueries({
+    @NamedQuery(name = "Khachhang.findAll", query = "SELECT k FROM Khachhang k")
+    , @NamedQuery(name = "Khachhang.findByMaKH", query = "SELECT k FROM Khachhang k WHERE k.maKH = :maKH")
+    , @NamedQuery(name = "Khachhang.findByTenKH", query = "SELECT k FROM Khachhang k WHERE k.tenKH = :tenKH")
+    , @NamedQuery(name = "Khachhang.findBySdt", query = "SELECT k FROM Khachhang k WHERE k.sdt = :sdt")
+    , @NamedQuery(name = "Khachhang.findByDiaChi", query = "SELECT k FROM Khachhang k WHERE k.diaChi = :diaChi")
+    , @NamedQuery(name = "Khachhang.findByGioiTinh", query = "SELECT k FROM Khachhang k WHERE k.gioiTinh = :gioiTinh")})
 public class Khachhang implements Serializable {
 
     private static final long serialVersionUID = 1L;

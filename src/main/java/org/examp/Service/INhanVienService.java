@@ -1,6 +1,5 @@
 package org.examp.Service;
 
-import org.examp.Entitys.Loaivanchuyen;
 import org.examp.Entitys.Nhanvien;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,6 @@
 package org.examp.Service.impl;
 
 import org.examp.Entitys.Khachhang;
-import org.examp.Repository.HoaDonRepository;
 import org.examp.Repository.KhachHangRepository;
 import org.examp.Service.IKhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +19,15 @@ public class KhachHangService implements IKhachHangService {
     @Override
     public Khachhang getOne(String id) {
         return khachHangRepository.findOne(id);
+    }
+
+    @Override
+    public Khachhang getOneBySdt(String sdt) {
+        return khachHangRepository.findFirstBySdt(sdt);
+    }
+
+    @Override
+    public void Add(Khachhang khachhang) {
+        khachHangRepository.save(khachhang);
     }
 }

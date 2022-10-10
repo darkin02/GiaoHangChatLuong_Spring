@@ -6,7 +6,15 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,6 +24,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "taikhoan")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Taikhoan.findAll", query = "SELECT t FROM Taikhoan t")
+    , @NamedQuery(name = "Taikhoan.findByTenTK", query = "SELECT t FROM Taikhoan t WHERE t.tenTK = :tenTK")
+    , @NamedQuery(name = "Taikhoan.findByMatKhau", query = "SELECT t FROM Taikhoan t WHERE t.matKhau = :matKhau")
+    , @NamedQuery(name = "Taikhoan.findByEmail", query = "SELECT t FROM Taikhoan t WHERE t.email = :email")
+    , @NamedQuery(name = "Taikhoan.findByLoaiTK", query = "SELECT t FROM Taikhoan t WHERE t.loaiTK = :loaiTK")
+    , @NamedQuery(name = "Taikhoan.findByTrangThai", query = "SELECT t FROM Taikhoan t WHERE t.trangThai = :trangThai")})
 public class Taikhoan implements Serializable {
 
     private static final long serialVersionUID = 1L;

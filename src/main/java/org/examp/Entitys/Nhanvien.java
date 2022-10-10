@@ -8,7 +8,19 @@ package org.examp.Entitys;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -19,6 +31,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "nhanvien")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Nhanvien.findAll", query = "SELECT n FROM Nhanvien n")
+    , @NamedQuery(name = "Nhanvien.findByMaNV", query = "SELECT n FROM Nhanvien n WHERE n.maNV = :maNV")
+    , @NamedQuery(name = "Nhanvien.findByTenNV", query = "SELECT n FROM Nhanvien n WHERE n.tenNV = :tenNV")
+    , @NamedQuery(name = "Nhanvien.findByNgaySinh", query = "SELECT n FROM Nhanvien n WHERE n.ngaySinh = :ngaySinh")
+    , @NamedQuery(name = "Nhanvien.findByDiaChi", query = "SELECT n FROM Nhanvien n WHERE n.diaChi = :diaChi")
+    , @NamedQuery(name = "Nhanvien.findByChucVu", query = "SELECT n FROM Nhanvien n WHERE n.chucVu = :chucVu")
+    , @NamedQuery(name = "Nhanvien.findByBacLuong", query = "SELECT n FROM Nhanvien n WHERE n.bacLuong = :bacLuong")
+    , @NamedQuery(name = "Nhanvien.findBySdt", query = "SELECT n FROM Nhanvien n WHERE n.sdt = :sdt")
+    , @NamedQuery(name = "Nhanvien.findByGioiTinh", query = "SELECT n FROM Nhanvien n WHERE n.gioiTinh = :gioiTinh")})
 public class Nhanvien implements Serializable {
 
     private static final long serialVersionUID = 1L;

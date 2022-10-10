@@ -7,7 +7,15 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -18,6 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "trangthai")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Trangthai.findAll", query = "SELECT t FROM Trangthai t")
+    , @NamedQuery(name = "Trangthai.findByMaTT", query = "SELECT t FROM Trangthai t WHERE t.maTT = :maTT")
+    , @NamedQuery(name = "Trangthai.findByMoTa", query = "SELECT t FROM Trangthai t WHERE t.moTa = :moTa")})
 public class Trangthai implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,8 +39,6 @@ public class Trangthai implements Serializable {
     private String maTT;
     @Column(name = "MoTa")
     private String moTa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "maTT")
-    private Collection<Phieuyeucau> phieuyeucauCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "maTT")
     private Collection<Hoadonvanchuyen> hoadonvanchuyenCollection;
 
@@ -53,15 +63,6 @@ public class Trangthai implements Serializable {
 
     public void setMoTa(String moTa) {
         this.moTa = moTa;
-    }
-
-    @XmlTransient
-    public Collection<Phieuyeucau> getPhieuyeucauCollection() {
-        return phieuyeucauCollection;
-    }
-
-    public void setPhieuyeucauCollection(Collection<Phieuyeucau> phieuyeucauCollection) {
-        this.phieuyeucauCollection = phieuyeucauCollection;
     }
 
     @XmlTransient

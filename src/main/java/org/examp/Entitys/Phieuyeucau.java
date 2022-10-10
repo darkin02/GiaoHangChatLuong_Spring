@@ -9,7 +9,17 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -19,6 +29,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "phieuyeucau")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Phieuyeucau.findAll", query = "SELECT p FROM Phieuyeucau p")
+    , @NamedQuery(name = "Phieuyeucau.findBySoPYC", query = "SELECT p FROM Phieuyeucau p WHERE p.soPYC = :soPYC")
+    , @NamedQuery(name = "Phieuyeucau.findByNgayLap", query = "SELECT p FROM Phieuyeucau p WHERE p.ngayLap = :ngayLap")
+    , @NamedQuery(name = "Phieuyeucau.findByKhoiLuong", query = "SELECT p FROM Phieuyeucau p WHERE p.khoiLuong = :khoiLuong")
+    , @NamedQuery(name = "Phieuyeucau.findByTrangThai", query = "SELECT p FROM Phieuyeucau p WHERE p.trangThai = :trangThai")
+    , @NamedQuery(name = "Phieuyeucau.findByThanhToan", query = "SELECT p FROM Phieuyeucau p WHERE p.thanhToan = :thanhToan")})
 public class Phieuyeucau implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,11 +49,11 @@ public class Phieuyeucau implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "KhoiLuong")
     private BigDecimal khoiLuong;
+    @Basic(optional = false)
+    @Column(name = "TrangThai")
+    private boolean trangThai;
     @Column(name = "ThanhToan")
     private BigInteger thanhToan;
-    @JoinColumn(name = "MaTT", referencedColumnName = "MaTT")
-    @ManyToOne(optional = false)
-    private Trangthai maTT;
     @JoinColumn(name = "MaKH", referencedColumnName = "MaKH")
     @ManyToOne
     private Khachhang maKH;
@@ -52,6 +69,11 @@ public class Phieuyeucau implements Serializable {
 
     public Phieuyeucau(String soPYC) {
         this.soPYC = soPYC;
+    }
+
+    public Phieuyeucau(String soPYC, boolean trangThai) {
+        this.soPYC = soPYC;
+        this.trangThai = trangThai;
     }
 
     public String getSoPYC() {
@@ -78,20 +100,20 @@ public class Phieuyeucau implements Serializable {
         this.khoiLuong = khoiLuong;
     }
 
+    public boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
     public BigInteger getThanhToan() {
         return thanhToan;
     }
 
     public void setThanhToan(BigInteger thanhToan) {
         this.thanhToan = thanhToan;
-    }
-
-    public Trangthai getMaTT() {
-        return maTT;
-    }
-
-    public void setMaTT(Trangthai maTT) {
-        this.maTT = maTT;
     }
 
     public Khachhang getMaKH() {

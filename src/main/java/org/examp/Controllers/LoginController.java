@@ -1,12 +1,12 @@
 package org.examp.Controllers;
 
-import org.examp.Entitys.Taikhoan;
+import org.examp.Entitys.Khachhang;
 import org.examp.Entitys.Userkh;
 import org.examp.Model.DangKy;
 import org.examp.Service.ThymeleafService;
+import org.examp.Service.impl.KhachHangService;
 import org.examp.Service.impl.UserKhService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -35,6 +35,8 @@ public class LoginController {
     @Autowired
     private UserKhService userKhService;
 
+    @Autowired
+    private KhachHangService khachHangService;
     public String md5(String str){
         MessageDigest md;
         String result = "";
@@ -80,7 +82,7 @@ public class LoginController {
     @PostMapping(value = "/register")
     public String printRegister(@ModelAttribute DangKy dangKy, Model model, HttpSession session){
         String email = dangKy.getEmail();
-        Userkh userkh = userKhService.getOneBySdt(dangKy.getSDT());
+        Userkh userkh = userKhService.getOne(dangKy.getSDT());
         if(userkh == null){
             try {
                 MimeMessage message = mailSender.createMimeMessage();
@@ -92,16 +94,16 @@ public class LoginController {
                 helper.setSubject("Đăng ký mới");
                 Random rd = new Random();
                 String SMS = String.valueOf(rd.nextInt(999999 -100000)+100000);
-                helper.setText(thymeleafService.getContent(dangKy,"ConfimNewUser",SMS),true);
+                helper.setText(thymeleafService.getContent(dangKy,"ConfirmNewUser",SMS),true);
                 mailSender.send(message);
                 session.setAttribute("inforDangKy",dangKy);
                 session.setAttribute("SMS", SMS);
-                return "redirect:/Login/ConfirmRegister";
+                return "redirect:/login/confirmregister";
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
         }
-        else model.addAttribute("error","Số điện thoại đã đang ký!");
+        else model.addAttribute("error","Số điện thoại đã đăng ký!");
         return "Login/Register";
     }
 
@@ -116,8 +118,29 @@ public class LoginController {
     public String printConfirmRegister(HttpServletRequest request,HttpSession session,Model model){
         String sms = request.getParameter("sms");
         if(sms.equals(session.getAttribute("SMS"))){
+            DangKy dangKy = (DangKy) session.getAttribute("inforDangKy");
+            Khachhang khachhang = khachHangService.getOneBySdt(dangKy.getSDT());
+            if(khachhang == null){
+                Khachhang khachhang1 = new Khachhang();
+                khachhang1.setMaKH("temp");
+                khachhang1.setTenKH(dangKy.getTenKH());
+                khachhang1.setGioiTinh(dangKy.getGioiTinh().equals("Nam")?Short.valueOf("0"):Short.valueOf("1"));
+                khachhang1.setDiaChi(dangKy.getFullAddress(dangKy));
+                khachhang1.setSdt(dangKy.getSDT());
+                khachHangService.Add(khachhang1);
+                khachhang = khachHangService.getOneBySdt(dangKy.getSDT());
+            }
+            Userkh userkh = new Userkh();
+            userkh.setSdt(dangKy.getSDT());
+            userkh.setEmail(dangKy.getEmail());
+            userkh.setMatKhau(md5(dangKy.getMatKhau()));
+            userkh.setMaKH(khachhang);
+            userkh.setUserName(dangKy.getUserName());
+            userKhService.Add(userkh);
+            session.removeAttribute("inforDangKy");
+            session.removeAttribute("SMS");
             model.addAttribute("error","Đăng ký thành công!");
-            return "redirect:/Login/login";
+            return "redirect:/login/index";
         }
         model.addAttribute("error","Mã xác nhận không đúng!");
         return "Login/ConfirmRegister";

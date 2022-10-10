@@ -6,7 +6,15 @@
 package org.examp.Entitys;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,6 +24,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "cthd")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Cthd.findAll", query = "SELECT c FROM Cthd c")
+    , @NamedQuery(name = "Cthd.findByMaCTHD", query = "SELECT c FROM Cthd c WHERE c.maCTHD = :maCTHD")
+    , @NamedQuery(name = "Cthd.findBySoLuong", query = "SELECT c FROM Cthd c WHERE c.soLuong = :soLuong")
+    , @NamedQuery(name = "Cthd.findByKg", query = "SELECT c FROM Cthd c WHERE c.kg = :kg")})
 public class Cthd implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,9 +42,6 @@ public class Cthd implements Serializable {
     @Basic(optional = false)
     @Column(name = "KG")
     private double kg;
-    @JoinColumn(name = "MaHH", referencedColumnName = "MaHH")
-    @ManyToOne
-    private Hanghoa maHH;
     @JoinColumn(name = "SoHD", referencedColumnName = "SoHD")
     @ManyToOne
     private Hoadonvanchuyen soHD;
@@ -71,14 +81,6 @@ public class Cthd implements Serializable {
 
     public void setKg(double kg) {
         this.kg = kg;
-    }
-
-    public Hanghoa getMaHH() {
-        return maHH;
-    }
-
-    public void setMaHH(Hanghoa maHH) {
-        this.maHH = maHH;
     }
 
     public Hoadonvanchuyen getSoHD() {

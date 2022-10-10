@@ -7,7 +7,15 @@ package org.examp.Entitys;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -18,6 +26,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "nhakho")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Nhakho.findAll", query = "SELECT n FROM Nhakho n")
+    , @NamedQuery(name = "Nhakho.findByMaNK", query = "SELECT n FROM Nhakho n WHERE n.maNK = :maNK")
+    , @NamedQuery(name = "Nhakho.findByTenNK", query = "SELECT n FROM Nhakho n WHERE n.tenNK = :tenNK")
+    , @NamedQuery(name = "Nhakho.findByDienTich", query = "SELECT n FROM Nhakho n WHERE n.dienTich = :dienTich")
+    , @NamedQuery(name = "Nhakho.findBySucChua", query = "SELECT n FROM Nhakho n WHERE n.sucChua = :sucChua")
+    , @NamedQuery(name = "Nhakho.findByDiaChi", query = "SELECT n FROM Nhakho n WHERE n.diaChi = :diaChi")
+    , @NamedQuery(name = "Nhakho.findByMaKV", query = "SELECT n FROM Nhakho n WHERE n.maKV = :maKV")})
 public class Nhakho implements Serializable {
 
     private static final long serialVersionUID = 1L;
