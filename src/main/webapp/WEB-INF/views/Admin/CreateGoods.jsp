@@ -4,38 +4,48 @@
 
 <h2 class="header-elements">THÊM HÀNG HÓA</h2>
 
-<form id="formAuthentication" class="mb-3" method="post">
+<form id="formAuthentication" class="mb-3" method="post" modelAttribute="HangHoa" action="<c:url value='/admin/creategoods'/>">
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
             <strong>Tên hàng hóa</strong>
             <div class="col-md-10">
-                <input type="date" class="form-control" id="TenHH" name="TenHH" placeholder="Tên hàng hóa" autofocus />
+                <input type="text" class="form-control" id="tenHH" name="tenHH" placeholder="Tên hàng hóa" autofocus />
             </div>
         </div>
 
         <div class="form-group">
             <strong>Mô tả</strong>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="MoTa" name="MoTa" placeholder="Mô tả" autofocus />
+                <input type="text" class="form-control" id="moTa" name="moTa" placeholder="Mô tả" autofocus />
             </div>
         </div>
         <div class="form-group">
             <strong>Đơn vị tính</strong>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="DonVT" name="DonVT" placeholder="Đơn vị tính" autofocus />
+                <select name="donVT" class="form-select form-select-lg">
+                    <option value="Cái">Cái</option>
+                    <option value="Hộp">Hộp</option>
+                    <option value="Bao">Bao</option>
+                    <option value="Gói">Gói</option>
+                    <option value="Chiếc">Chiếc</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <strong>Loại hàng hóa</strong>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="MaLHH" name="MaLHH" placeholder="Loại hàng hóa" autofocus />
+                <select name="maLHH" class="form-select form-select-lg">
+                    <c:forEach items="${listLHH}" var="category">
+                        <option value="${category.maLHH}">${category.tenLHH}</option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <strong>Giá tiền</strong>
             <div class="col-md-10">
-                <input type="number" class="form-control" id="GiaTien" name="GiaTien" placeholder="Giá tiền" autofocus />
+                <input type="number" class="form-control" id="giaTien" name="giaTien" placeholder="Giá tiền" autofocus />
             </div>
         </div>
         <div class="form-group">

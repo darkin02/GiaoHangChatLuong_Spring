@@ -34,16 +34,15 @@
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
-                @if (Session["UserName"] != null)
-                {
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link" data-toggle="dropdown">@Session["UserName"]</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html" class="dropdown-item">Thông Tin</a>
-                        <a class="dropdown-item" href="<c:url value=""/>">Đăng Xuất</a>
-                    </div>
-                </div>}
+                <c:if test="${UserName ne null}">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-toggle="dropdown">${UserName}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="blog.html" class="dropdown-item">Thông Tin</a>
+                            <a class="dropdown-item" href="<c:url value=""/>">Đăng Xuất</a>
+                        </div>
+                    </div></c:if>
                 <a class="text-white px-2" href="https://www.facebook.com/mcuongbush">
                     <i class="fab fa-facebook-f"></i>
                 </a>

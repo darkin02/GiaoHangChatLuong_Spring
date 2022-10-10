@@ -15,9 +15,10 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author ACER
  */
-@Entity
+
 @Table(name = "hanghoa")
 @XmlRootElement
+@Entity
 public class Hanghoa implements Serializable {
 
     private static final long serialVersionUID = 1L;

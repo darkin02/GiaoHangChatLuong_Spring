@@ -72,11 +72,10 @@
             <!-- /Logo -->
             <h4 class="mb-2">Đăng ký tại đây 🚀</h4>
             <p class="mb-4">Đăng ký để quản lý hệ thống!</p>
-<%--            @if (TempData["AlretMessage"] != null)--%>
-<%--            {--%>
-<%--            <div id="AlertBox" class="alert @TempData["AlretType"] hide">--%>
-<%--            @TempData["AlretMessage"]--%>
-<%--          </div>}--%>
+            <c:if test="${error ne null}">
+              <div id="AlertBox" class="alert">
+                  ${error}
+              </div></c:if>
           <form id="formAuthentication" class="mb-3" method="POST">
             <div class="mb-3">
               <label for="username" class="form-label">Tên đăng nhập</label>

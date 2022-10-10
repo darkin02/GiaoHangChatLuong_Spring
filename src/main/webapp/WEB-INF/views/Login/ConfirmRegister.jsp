@@ -5,6 +5,10 @@
     <span class="login100-form-title p-b-43">
         Xác nhận Email
     </span>
+    <c:if test="${error ne null}">
+        <div id="AlertBox" class="alert">
+                ${error}
+        </div></c:if>
     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
         <input class="input100" type="text" name="sms">
         <span class="focus-input100"></span>

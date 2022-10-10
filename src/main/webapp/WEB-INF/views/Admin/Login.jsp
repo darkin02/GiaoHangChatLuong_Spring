@@ -72,15 +72,14 @@
                         <!-- /Logo -->
                         <h4 class="mb-2">Đăng Nhập 👋</h4>
                         <p class="mb-4">Vui lòng đăng nhập vào tài khoản của bạn</p>
-<%--                        @if (TempData["AlretMessage"] != null)--%>
-<%--                        {--%>
-<%--                        <div id="AlertBox" class="alert @TempData["AlretType"] hide">--%>
-<%--                        @TempData["AlretMessage"]--%>
-<%--                    </div>}--%>
+                        <c:if test="${error ne null}">
+                            <div id="AlertBox" class="alert">
+                                    ${error}
+                            </div></c:if>
                     <form id="formAuthentication" class="mb-3" method="post">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Tên tài khoản</label>
-                            <input type="text" class="form-control" id="email" name="UserName" placeholder="Tên Tài Khoản" autofocus />
+                            <label for="UserName" class="form-label">Tên tài khoản</label>
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Tên Tài Khoản" autofocus />
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">

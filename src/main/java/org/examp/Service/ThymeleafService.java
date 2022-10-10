@@ -47,13 +47,13 @@ public class ThymeleafService {
         return templateResolver;
     }
 
-    public String getContent(DangKy dangKy,String template_name) {
+    public String getContent(DangKy dangKy,String template_name,String sms) {
         final Context context = new Context();
         context.setVariable("name", dangKy.getTenKH());
         context.setVariable("Phone", dangKy.getSDT());
         context.setVariable("Email", dangKy.getEmail());
         context.setVariable("Address", dangKy.getDiaChi());
-        context.setVariable("SMS", "12");
+        context.setVariable("SMS", sms);
         return templateEngine.process(template_name, context);
     }
 

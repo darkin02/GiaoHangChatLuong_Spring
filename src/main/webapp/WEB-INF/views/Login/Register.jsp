@@ -13,6 +13,10 @@
     <span class="login100-form-title p-b-43">
         Đăng Ký Tài Khoản
     </span>
+  <c:if test="${error ne null}">
+    <div id="AlertBox" class="alert">
+        ${error}
+    </div></c:if>
   <div class="wrap-input100 validate-input" data-validate="Họ tên là bắt buộc">
     <input class="input100" type="text" name="TenKH">
     <span class="focus-input100"></span>

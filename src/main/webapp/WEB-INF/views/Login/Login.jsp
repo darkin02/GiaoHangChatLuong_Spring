@@ -5,13 +5,17 @@
     <span class="login100-form-title p-b-43">
         Đăng Nhập Để Tiếp Tục
     </span>
+    <c:if test="${error ne null}">
+        <div id="AlertBox" class="alert">
+                ${error}
+        </div></c:if>
     <div class="wrap-input100 validate-input" data-validate="Số điện thoại không được để trống!">
-        <input class="input100" type="text" name="UserName">
+        <input class="input100" type="text" name="sDT">
         <span class="focus-input100"></span>
         <span class="label-input100">Số Điện Thoại</span>
     </div>
     <div class="wrap-input100 validate-input" data-validate="Password is required">
-        <input class="input100" type="password" name="Password">
+        <input class="input100" type="password" name="password">
         <span class="focus-input100"></span>
         <span class="label-input100">Mật Khẩu</span>
     </div>

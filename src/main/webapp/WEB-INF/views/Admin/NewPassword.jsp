@@ -72,28 +72,26 @@
                         <!-- /Logo -->
                         <h4 class="mb-2">Quên mật khẩu 👋</h4>
                         <p class="mb-4">Vui lòng đổi mật khẩu của bạn</p>
-<%--                        @if (TempData["AlretMessage"] != null)--%>
-<%--                        {--%>
-<%--                        <div id="AlertBox" class="alert @TempData["AlretType"] hide">--%>
-<%--                        @TempData["AlretMessage"]--%>
-<%--                    </div>}--%>
+                        <c:if test="${error ne null}">
+                            <div id="AlertBox" class="alert">
+                                    ${error}
+                            </div></c:if>
                     <form id="formAuthentication" class="mb-3" method="post">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Mật khẩu mới</label>
-                            <input type="password" class="form-control" id="email" name="Pass" placeholder="Mật khẩu mới" autofocus />
+                            <label for="Pass" class="form-label">Mật khẩu mới</label>
+                            <input type="password" class="form-control" id="Pass" name="Pass" placeholder="Mật khẩu mới" autofocus />
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Xác nhận mật khẩu</label>
-                            <input type="password" class="form-control" id="email" name="AgainPass" placeholder="Xác nhận mật khẩu" autofocus />
+                            <label for="AgainPass" class="form-label">Xác nhận mật khẩu</label>
+                            <input type="password" class="form-control" id="AgainPass" name="AgainPass" placeholder="Xác nhận mật khẩu" autofocus />
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Xác nhận</button>
                         </div>
-                        @if (Session["successChangePass"] != null)
-                        {
+                        <c:if test="${success ne null}">
                         <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" onclick="location.href='@Url.Action("Login", "Admin")'" type="button"> Đăng Nhập</button>
-                        </div>}
+                            <button class="btn btn-primary d-grid w-100" onclick="window.location.href='login'"> Đăng Nhập</button>
+                        </div></c:if>
                     </form>
                 </div>
             </div>

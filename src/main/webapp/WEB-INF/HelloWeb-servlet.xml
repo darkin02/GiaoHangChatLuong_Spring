@@ -28,7 +28,7 @@
             </props>
         </property>    </bean>
     <mvc:resources mapping="/**" location="/" />
-    <mvc:resources mapping="/Resources/**" location="/Resources/" />
+    <mvc:resources mapping="/Resources/**" location="/" />
     <mvc:annotation-driven/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
