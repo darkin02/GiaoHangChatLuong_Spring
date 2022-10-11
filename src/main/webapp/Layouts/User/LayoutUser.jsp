@@ -78,7 +78,7 @@
                 <a class="nav-item nav-link" href="<c:url value="about"/>">Về chúng tôi</a>
                 <a class="nav-item nav-link" href="<c:url value="service"/>">Dịch Vụ</a>
                 <a class="nav-item nav-link" href="<c:url value="price"/>">Giá</a>
-                <a class="nav-item nav-link" href="<c:url value="blog"/>">Blog Tin Tức</a>
+                <a class="nav-item nav-link" href="<c:url value="blog/1"/>">Blog Tin Tức</a>
                 <a class="nav-item nav-link" href="<c:url value="contact"/>">Bản đồ</a>
             </div>
             <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Nhận Báo Giá</a>

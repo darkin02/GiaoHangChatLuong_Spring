@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Header Start -->
 <div class="jumbotron jumbotron-fluid mb-5">
     <div class="container text-center py-5">
@@ -13,11 +14,10 @@
         <!-- Blog Grid Start -->
         <div class="col-lg-8">
             <div class="row">
-                @foreach (var item in Model)
-                {
+                <c:forEach var="item" items="${list}" >
                 <div class="col-md-12 mb-3">
                     <div class="position-relative">
-                        <img class="img-fluid w-100" src="@item.Link" alt="" style="height: 350px;">
+                        <img class="img-fluid w-100" src="${item.link}" alt="" style="height: 350px;">
                         <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
                              style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
                             <h4 class="font-weight-bold mb-n1">01</h4>
@@ -27,70 +27,59 @@
                     <div class="bg-secondary" style="padding: 30px;">
                         <div class="d-flex mb-3">
                             <div class="d-flex align-items-center">
-                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="@item.Author_Img" alt="">
-                                <a class="text-muted ml-2" href="">@item.Author</a>
+                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="/GiaoHangChatLuong_war/Resources${item.author_Img}" alt="">
+                                <a class="text-muted ml-2" href="">${item.author}</a>
                             </div>
                             <div class="d-flex align-items-center ml-4">
                                 <i class="far fa-bookmark text-primary"></i>
                                 <a class="text-muted ml-2" href="">Blog</a>
                             </div>
                         </div>
-                        <h4 class="font-weight-bold mb-3 h4-tin">@item.Title</h4>
-                        <p>@item.Solution</p>
-                        <a class="border-bottom border-primary text-uppercase text-decoration-none" href="@Url.Action("Single","GiaoHang")">Đọc Thêm</a>
+                        <h4 class="font-weight-bold mb-3 h4-tin">${item.title}</h4>
+                        <p>${item.solution}</p>
+                        <a class="border-bottom border-primary text-uppercase text-decoration-none" href="<c:url value="single"/>">Đọc Thêm</a>
                     </div>
-                </div>}
+                </div></c:forEach>
             </div>
-            Trang @Model.PageNumber / @Model.PageCount
+            Trang @${PageNumber} / ${PageCount}
             <div>
                 <div class="row">
                     <div class="col-12">
                         <nav aria-label="Page navigation">
                             <ul class="pagination pagination-lg justify-content-center mb-0">
                                 <li class="page-item">
-                                    @if (Model.PageNumber != 1)
-                                    {
+                                    <c:if test="${PageNumber ne 1}">
                                 <li class="page-item">
-                                    <a class="page-link " href="@Url.Action("Blog", new { page = Model.PageNumber -1 })" aria-label="Previous">
+                                    <a class="page-link " href="<c:url value="${PageNumber-1}"/>">
                                     <span aria-hidden="true">&laquo;</span>
                                     <span class="sr-only">Previous</span>
                                     </a>
-                                </li>}
-                                @if (Model.PageNumber == 1)
-                                {
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>}
-
-                                @for (int i = 1; i <= Model.PageCount; i++)
-                                {
-                                if (Model.PageNumber == i)
-                                {
-                                <li class="page-item active"><a class="page-link" href="@Url.Action("Blog", new { page = i })">@i</a></li> }
-                                if (Model.PageNumber != i)
-                                {
-                                <li class="page-item"><a class="page-link" href="@Url.Action("Blog", new { page = i })">@i</a></li>
-                                }
-                                }
-                                @if (Model.PageNumber != Model.PageCount)
-                                {
-                                <li class="page-item">
-                                    <a class="page-link " href="@Url.Action("Blog", new { page = Model.PageNumber +1 })" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                    </a>
-                                </li>}
-                                @if (Model.PageNumber == Model.PageCount)
-                                {
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" aria-label="Next">
+                                </li></c:if>
+                                <c:if test="${PageNumber == 1}">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li></c:if>
+                                <c:forEach var = "i" begin = "1" end = "${PageCount}" >
+                                    <c:if test="${PageNumber == i}">
+                                    <li class="page-item active"><a class="page-link" href="<c:url value="${i}"/>">${i}</a></li></c:if>
+                                    <c:if test="${PageNumber ne i}">
+                                        <li class="page-item"><a class="page-link" href="<c:url value="${i}"/>">${i}</a></li></c:if>
+                                </c:forEach>
+                                    <c:if test="${PageNumber ne PageCount}"> <li class="page-item">
+                                        <a class="page-link " href="<c:url value="${PageNumber +1}"/>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
-                                    </a>
-                                </li>}
+                                        </a>
+                                    </li></c:if>
+                                    <c:if test="${PageNumber == PageCount}"><li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li></c:if>
                             </ul>
                         </nav>
                     </div>

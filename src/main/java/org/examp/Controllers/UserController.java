@@ -1,10 +1,12 @@
 package org.examp.Controllers;
 
+import org.examp.Model.Blog_ItemModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,8 +26,21 @@ public class UserController {
         ModelAndView mav = new ModelAndView("User/about");
         return mav;
     }
-    @GetMapping(value = "/blog")
-    public ModelAndView printBlog(Model model){
+    @GetMapping(value = "/blog/{page}")
+    public ModelAndView printBlog(Model model,@PathVariable int page){
+        int pageSize = 3;
+        int pageNum = page;
+        List<Blog_ItemModel> lst = Blog_ItemModel.Init();
+        model.addAttribute("PageNumber",pageNum);
+        model.addAttribute("PageCount",(int)Math.ceil((double)lst.size()/(double)pageSize));
+        List<Blog_ItemModel> lst1 = new ArrayList<>();
+        int dem = 0;
+        for (int i = (page-1)*pageSize ;i< lst.size() ;i++ ){
+            lst1.add(lst.get(i));
+            dem++;
+            if (dem == pageSize) break;
+        }
+        model.addAttribute("list",lst1);
         ModelAndView mav = new ModelAndView("User/blog");
         return mav;
     }

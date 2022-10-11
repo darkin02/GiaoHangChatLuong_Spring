@@ -35,7 +35,7 @@
   <div class="gender">
     <span>Giới Tính:</span>
     <input checked="checked" name="GioiTinh" type="radio" value="Nam" />Nam
-    <input name="GioiTinh1" type="radio" value="Nữ" />Nữ
+    <input name="GioiTinh" type="radio" value="Nữ" />Nữ
   </div>
   <div class="wrap-input100 validate-input">
     <select name="ls_province" id="ls_province" class="input100" style="
