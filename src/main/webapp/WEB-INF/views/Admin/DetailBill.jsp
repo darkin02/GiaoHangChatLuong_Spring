@@ -12,11 +12,11 @@
 <div>
     <hr/>
     <dl class="dl-horizontal">
-        <p><strong>Số hóa đơn: </strong><label>${SoHD}</label></p>
-        <p><strong>Ngày lập: </strong><label>${NgayLapHD}</label></p>
-        <p><strong>Tổng tiền: </strong><label>${TongTien}</label></p>
-        <p><strong>Mã nhân viên: </strong><label>${MaNV}</label></p>
-        <p><strong>Mã tuyến đường: </strong><label>${MaTD}</label></p>
+        <p><strong>Số hóa đơn: </strong><label>${hd.SoHD}</label></p>
+        <p><strong>Ngày lập: </strong><label>${hd.NgayLapHD}</label></p>
+        <p><strong>Tổng tiền: </strong><label>${hd.TongTien}</label></p>
+        <p><strong>Mã nhân viên: </strong><label>${hd.MaNV}</label></p>
+        <p><strong>Mã tuyến đường: </strong><label>${hd.MaTD}</label></p>
     </dl>
 </div>
 

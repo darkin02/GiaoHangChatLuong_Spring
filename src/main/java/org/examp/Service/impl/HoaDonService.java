@@ -1,7 +1,7 @@
 package org.examp.Service.impl;
 
 import org.examp.Entitys.Hoadonvanchuyen;
-import org.examp.Repository.HoaDonRepository;
+import org.examp.Repository.*;
 import org.examp.Service.IHoaDonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
