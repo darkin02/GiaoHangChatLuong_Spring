@@ -46,6 +46,9 @@ public class AdminController {
     @Autowired
     private INhanVienService nhanVienService;
 
+    @Autowired
+    private IPhieuyeucauService phieuyeucauService;
+
     public String md5(String str){
         MessageDigest md;
         String result = "";
@@ -263,8 +266,15 @@ public class AdminController {
 
     /* Recipients */
 
+    @GetMapping("/indexecipients")
+    public String printIndexRecipients(Model model){
+        model.addAttribute("list",phieuyeucauService.getAll());
+        return "Admin/IndexRecipients";
+    }
+
     @GetMapping("/createrecipients")
-    public String printCreateRecipients(){
+    public String printCreateRecipients(Model model){
+        model.addAttribute("list",phieuyeucauService.getAll());
         return "Admin/CreateRecipients";
     }
 

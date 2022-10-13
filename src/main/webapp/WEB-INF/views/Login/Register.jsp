@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/views/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<script src="<c:url value='/Resources/js/Scripts/vietnamlocalselector.js'/>"></script>
+<script src="<c:url value='/Resources/js/Scripts/vietnamlocalselectortest.js'/>"></script>
 <script>
   var localpicker = new LocalPicker({
     province: "ls_province",
