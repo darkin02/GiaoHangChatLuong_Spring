@@ -66,8 +66,8 @@
 <!-- Navbar Start -->
 <div class="container-fluid p-0 top-bar">
     <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
-            <h1 class="m-0 display-5 text-uppercase Title"><img src="~/img/logo1.png">GHChatLuong</h1>
+        <a href="<c:url value="/"/>" class="navbar-brand ml-lg-3">
+            <h1 class="m-0 display-5 text-uppercase Title"><img src="<c:url value='/Resources/img/logo1.png'/>">GHChatLuong</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -81,7 +81,7 @@
                 <a class="nav-item nav-link" href="<c:url value="blog/1"/>">Blog Tin Tức</a>
                 <a class="nav-item nav-link" href="<c:url value="contact"/>">Bản đồ</a>
             </div>
-            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Nhận Báo Giá</a>
+            <a href="<c:url value="request"/>" class="btn btn-primary py-2 px-4 d-none d-lg-block">Gửi hàng</a>
         </div>
     </nav>
 </div>

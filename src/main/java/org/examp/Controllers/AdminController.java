@@ -46,9 +46,6 @@ public class AdminController {
     @Autowired
     private INhanVienService nhanVienService;
 
-    @Autowired
-    private IHoaDonService hoaDonService;
-
     public String md5(String str){
         MessageDigest md;
         String result = "";
@@ -218,14 +215,6 @@ public class AdminController {
     //---------------------Phân chức năng------------
 
     /* Bill */
-
-    @GetMapping("/detailbill/{id}")
-    public ModelAndView printDetailBill(@PathVariable String id){
-        Hoadonvanchuyen hd = hoaDonService.getOne(id);
-        ModelAndView hoadon = new ModelAndView("Admin/DeatilBill");
-        hoadon.addObject("hd",hd);
-        return hoadon;
-    }
 
     @GetMapping("/createbill")
     public String printCreateBill(Model model){

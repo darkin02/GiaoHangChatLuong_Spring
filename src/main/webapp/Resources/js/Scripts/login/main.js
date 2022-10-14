@@ -18,8 +18,6 @@ function register() {
             }
         })
     })
-
-
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');

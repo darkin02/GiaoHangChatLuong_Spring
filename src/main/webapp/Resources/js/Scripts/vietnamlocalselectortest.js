@@ -10,10 +10,10 @@
             district = 'ls_district',
             ward = 'ls_ward',
             getValueBy = 'name',
-            provinceText = '',
-            districtText = '',
-            wardText = '',
-            wardNoText = '',
+            provinceText = 'Chọn tỉnh/thành phố',
+            districtText = 'Chọn quận/huyện',
+            wardText = 'Chọn phường/xã',
+            wardNoText = 'Địa phương này không có phường / xã',
             emptyValue = " ",
             hideEmptyValueOption = true,
             hidePlaceHolderOption = true,
@@ -94,8 +94,4 @@
         }
         window.addEventListener('load', init);
     };
-
-
-
-
 }());
