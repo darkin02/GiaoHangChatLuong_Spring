@@ -8,4 +8,5 @@ import java.util.List;
 public interface IHoaDonService {
     List<Hoadonvanchuyen> getAll();
     Hoadonvanchuyen getOne(String id);
+    void Add (Hoadonvanchuyen hoadonvanchuyen);
 }

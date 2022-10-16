@@ -20,4 +20,9 @@ public class HoaDonService implements IHoaDonService {
     public Hoadonvanchuyen getOne(String id) {
         return hoadonRepository.findOne(id);
     }
+
+    @Override
+    public void Add(Hoadonvanchuyen hoadonvanchuyen) {
+        hoadonRepository.save(hoadonvanchuyen);
+    }
 }

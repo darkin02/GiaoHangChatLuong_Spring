@@ -175,10 +175,10 @@
                                     </a>
                                 </li>
                             </c:if>
-                        <c:if test="${sessionScope.get('Hàng hoá') ne null}">
+                        <c:if test="${sessionScope.get('Phiếu yêu cầu') ne null}">
                                 <li class="menu-item">
-                                    <a href="<c:url value="indexgoods"/>" class="menu-link">
-                                        <div data-i18n="Text Divider">Hàng hoá</div>
+                                    <a href="<c:url value="indexrecipients"/>" class="menu-link">
+                                        <div data-i18n="Text Divider">Phiếu yêu cầu</div>
                                     </a>
                                 </li>
                             </c:if>

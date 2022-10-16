@@ -23,57 +23,71 @@
             <strong>Tiền vận chuyển</strong>
         </th>
         <th>
-            <strong>Mã nhân viên</strong>
+            <strong>Tên nhân viên</strong>
         </th>
         <th>
-            <strong>Mã tuyến đường</strong>
+            <strong>Trạng thái</strong>
         </th>
         <th>
             <strong>COD</strong>
         </th>
         <th>
-            <strong>Mã tuyến đường</strong>
+            <strong>Tuyến đường</strong>
         </th>
         <th>
-            <strong>Mã loại vận chuyển</strong>
+            <strong>Loại vận chuyển</strong>
         </th>
         <th>
-            <strong>Mã khách hàng</strong>
+            <strong>Tên khách hàng</strong>
         </th>
         <th>
-            <strong>Mã khách nhận</strong>
+            <strong>Tên khách nhận</strong>
         </th>
         <th></th>
     </tr>
     <c:forEach var="item" items="${list}" >
     <tr>
         <td>
-            <c:out value="${item.NgayLapHD}"/>
-            @Html.DisplayFor(modelItem => item.NgayLapHD)
+            <p>${item.soHD}</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TongTien)
+            <p>${item.ngayLapHD}</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SoPGH)
+            <p>${item.tongTien}</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MaNV)
+            <p>${item.tienVC}</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
+            <p>${item.maNV.tenNV}</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MaTD)
+            <p>${item.maTT.moTa}</p>
         </td>
         <td>
-            <a href="@Url.Action("EditBill", "Admin", new { id = item.SoHD.Replace(" ", "") })">
+            <p>${item.cod}</p>
+        </td>
+        <td>
+            <p>${item.maTD.tenTD}</p>
+        </td>
+        <td>
+            <p>${item.maLVC.tenLVC}</p>
+        </td>
+        <td>
+            <p>${item.maKH.tenKH}</p>
+        </td>
+        <td>
+            <p>${item.maKN.tenKN}</p>
+        </td>
+        <td>
+            <a href="<c:url value="/editbill"/>">
             <i class="fa fa-edit btn btn-info btn-sm">Chỉnh sửa</i>
             </a> |
-            <a href="@Url.Action("DetailsBill", "Admin", new { id = item.SoHD.Replace(" ", "") })">
+            <a href="<c:url value="/detailbill"/>">
             <i class="btn btn-warning btn-sm">Chi tiết</i>
             </a> |
-            <a href="@Url.Action("DeleteBill", "Admin", new { id = item.SoHD.Replace(" ", "") })">
+            <a href="<c:url value="/deletebill"/>">
             <i class="btn btn-danger btn-sm">Xoá</i>
             </a>
         </td>

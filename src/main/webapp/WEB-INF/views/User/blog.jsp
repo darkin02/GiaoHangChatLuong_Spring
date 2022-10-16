@@ -136,31 +136,31 @@
             <div class="mb-5">
                 <h3 class="mb-4">Bài đăng gần đây</h3>
                 <div class="d-flex mb-3">
-                    <img class="img-fluid" src="~/img/blog-1.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                    <img class="img-fluid" src="<c:url value='/Resources/img/blog-1.jpg'/>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
                         Mỗi đứa trẻ đều có trong mình một ước mơ.
                     </a>
                 </div>
                 <div class="d-flex mb-3">
-                    <img class="img-fluid" src="~/img/blog-2.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                    <img class="img-fluid" src="<c:url value='/Resources/img/blog-2.jpg'/>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
                         Mỗi đứa trẻ đều có trong mình một ước mơ.
                     </a>
                 </div>
                 <div class="d-flex mb-3">
-                    <img class="img-fluid" src="~/img/blog-1.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                    <img class="img-fluid" src="<c:url value='/Resources/img/blog-1.jpg'/>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
                         Mỗi đứa trẻ đều có trong mình một ước mơ.
                     </a>
                 </div>
                 <div class="d-flex mb-3">
-                    <img class="img-fluid" src="~/img/blog-2.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                    <img class="img-fluid" src="<c:url value='/Resources/img/blog-2.jpg'/>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
                         Mỗi đứa trẻ đều có trong mình một ước mơ.
                     </a>
                 </div>
                 <div class="d-flex mb-3">
-                    <img class="img-fluid" src="~/img/blog-1.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                    <img class="img-fluid" src="<c:url value='/Resources/img/blog-1.jpg'/>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                     <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
                         Mỗi đứa trẻ đều có trong mình một ước mơ.
                     </a>
@@ -169,7 +169,7 @@
             <!-- Recent Post End -->
             <!-- Image Start -->
             <div class="mb-5">
-                <img src="~/img/blog-1.jpg" alt="" class="img-fluid">
+                <img src="<c:url value='/Resources/img/blog-1.jpg'/>" alt="" class="img-fluid">
             </div>
             <!-- Image End -->
             <!-- Tags Start -->
