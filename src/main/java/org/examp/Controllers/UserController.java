@@ -3,9 +3,13 @@ package org.examp.Controllers;
 import org.examp.Entitys.*;
 import org.examp.Model.Blog_ItemModel;
 import org.examp.Model.DangKyPhieuGui;
+import org.examp.Model.HanhTrinh;
+import org.examp.Model.TheoDoi;
 import org.examp.Repository.LoaiVanChuyenRepository;
+import org.examp.Service.INhaKhoService;
 import org.examp.Service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -38,13 +44,51 @@ public class UserController {
 
     @Autowired
     PhieuyeucauService phieuyeucauService;
+
+    @Autowired
+    CtVanChuyenService ctVanChuyenService;
+
+    @Autowired
+    HoaDonService hoaDonService;
+
+    @Autowired
+    INhaKhoService nhaKhoService;
     @RequestMapping(value = "/")
     public ModelAndView printIndex(Model model){
 
         ModelAndView mav = new ModelAndView("User/index");
         return mav;
     }
-
+    @PostMapping(value = "/theodoi")
+    public String TheoDoi(HttpServletRequest request, HttpSession session)
+    {
+        Hoadonvanchuyen HD = hoaDonService.getOne(request.getParameter("SoHD"));
+        if (HD != null)
+        {
+            TheoDoi td = new TheoDoi(HD);
+            session.setAttribute("TheoDoi",td);
+            session.setAttribute("SoHD",request.getParameter("SoHD"));
+            List<Ctvanchuyen> model = ctVanChuyenService.getAllBySoHD(request.getParameter("SoHD"));
+            List<HanhTrinh> lst = new ArrayList<>();
+            for (Ctvanchuyen item: model
+                 ) {
+                Nhakho nk = nhaKhoService.getOne(item.getMaNK());
+                lst.add(new HanhTrinh(item.getNgayNhapKho(), nk.getTenNK(), true));
+                if (item.getNgayNhapKho() != null)
+                {
+                    lst.add(new HanhTrinh(item.getNgayXuatKho(), nk.getTenNK(), false));
+                }
+            }
+            session.setAttribute("QuaTrinh",lst);
+        }
+        else
+        {
+            session.setAttribute("SoHD",null);
+            session.setAttribute("TheoDoi",null);
+            session.setAttribute("ErrorTheoDoi","Số hóa đơn không có trong danh sách. Vui lòng nhập số hóa đơn khác!");
+        }
+        return "redirect:/";
+    }
     @GetMapping(value = "/about")
     public ModelAndView printAbout(Model model){
         ModelAndView mav = new ModelAndView("User/about");

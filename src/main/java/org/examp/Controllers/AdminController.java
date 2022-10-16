@@ -1,6 +1,7 @@
 package org.examp.Controllers;
 
 import org.examp.Entitys.*;
+import org.examp.Model.CreateBill;
 import org.examp.Model.DangKy;
 import org.examp.Service.*;
 import org.examp.Service.impl.KhachHangService;
@@ -46,6 +47,26 @@ public class AdminController {
     @Autowired
     private INhanVienService nhanVienService;
 
+<<<<<<< HEAD
+=======
+    @Autowired
+    private IPhieuyeucauService phieuyeucauService;
+
+    @Autowired
+    private ICtTuyenDuongService ctTuyenDuongService;
+
+    @Autowired
+    private ITuyenDuongService tuyenDuongService;
+
+    @Autowired
+    private IHoaDonService hoaDonService;
+
+    @Autowired
+    private IRoleService roleService;
+
+    @Autowired
+    private ICtRoleService ctRoleService;
+>>>>>>> 70c748d687b01cba6edb9391175b7d907afbc723
     public String md5(String str){
         MessageDigest md;
         String result = "";
@@ -81,9 +102,7 @@ public class AdminController {
         {
             if(mk.equals(tk.getMatKhau().toLowerCase())){
                 session.setAttribute("TaiKhoan",tk.getTenTK());
-//                Cap_quyen(tk.TenTK);
-//                tk.TrangThai = true;
-//                data.SaveChanges();
+                Cap_quyen(tk.getTenTK(),session);
                 String srcImg = "/GiaoHangChatLuong_war/Resources/img/" + tk.getTenTK() +".jpg";
                 session.setAttribute("ImgAcc",srcImg);
                 return "redirect:/admin/index";
@@ -206,27 +225,95 @@ public class AdminController {
 
     /* trang chu admin  */
 
+    public void Cap_quyen(String TenTK,HttpSession session)
+    {
+        for (CtRole item:ctRoleService.getAll()
+        ) {
+            session.removeAttribute(roleService.getOne(item.getIDRole()).getRoleName());
+        }
+        for (CtRole item:ctRoleService.getAllByTenTK(TenTK)
+             ) {
+           session.setAttribute(roleService.getOne(item.getIDRole()).getRoleName(),true);
+        }
+    }
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String printIndex(HttpSession session){
-        session.setAttribute("Phân Quyền",true);
         return "Admin/Index";
     }
 
     //---------------------Phân chức năng------------
 
     /* Bill */
-
+    @GetMapping("/createbill/{SoPYC}")
+    public String printCreateBillFormPYC(Model model,@PathVariable String SoPYC,HttpSession session){
+        session.setAttribute("PhieuYeuCau",SoPYC);
+        return "redirect:/admin/createbill";
+    }
+    @GetMapping("/indexbill")
+    public String printIndexBill(Model model){
+        model.addAttribute("list",hoaDonService.getAll());
+        return "Admin/IndexBill";
+    }
     @GetMapping("/createbill")
-    public String printCreateBill(Model model){
-        List<Khachhang> listKH = khachHangService.getAll();
-        List<Loaivanchuyen> listCatagory = loaiVanChuyenService.getAll();
-        model.addAttribute("listLVC", listCatagory);
-        model.addAttribute("listKH", listKH);
+    public String printCreateBill(Model model,HttpSession session){
+        String temp =  String.valueOf(session.getAttribute("PhieuYeuCau"));
+        if(temp != null){
+            Phieuyeucau pyc = phieuyeucauService.getOne(temp);
+            Khachhang khachhang = pyc.getMaKH();
+            Khachnhan khachnhan = pyc.getMaKN();
+            CreateBill bill = new CreateBill(khachhang.getTenKH(),khachhang.getSdt(),pyc.getNgayLap(),"","","",khachhang.getDiaChi(),khachhang.getGioiTinh()==0?"Nam":"Nữ",khachnhan.getTenKN(),khachnhan.getSdt(),"","","",khachnhan.getDiaChi(),khachnhan.getGioiTinh()?"Nam":"Nữ",0,pyc.getMaLVC().getMaLVC());
+
+            model.addAttribute("bill",bill);
+        }
+        else {
+            List<Khachhang> listKH = khachHangService.getAll();
+            List<Loaivanchuyen> listCatagory = loaiVanChuyenService.getAll();
+            model.addAttribute("listLVC", listCatagory);
+        }
         return "Admin/CreateBill";
     }
 
     @PostMapping("/createbill")
-    public String printCreateBill(HttpServletRequest request, HttpSession session, Model model){
+    public String printCreateBill(HttpServletRequest request, HttpSession session, Model model, @ModelAttribute CreateBill createBill){
+        String temp =  String.valueOf(session.getAttribute("PhieuYeuCau"));
+        if(temp != null){
+            Phieuyeucau pyc = phieuyeucauService.getOne(temp);
+            Khachhang khachhang = pyc.getMaKH();
+            Khachnhan khachnhan = pyc.getMaKN();
+            Tuyenduong tuyenduong = new Tuyenduong();
+            int i = khachhang.getDiaChi().indexOf("Thành Phố");
+            String s = "";
+            if(i != -1){
+                s = String.copyValueOf(khachhang.getDiaChi().toCharArray(),i+10,khachhang.getDiaChi().length()-i-10);
+            }
+            int x = khachhang.getDiaChi().indexOf("Tỉnh");
+            if(x != -1){
+                s = String.copyValueOf(khachhang.getDiaChi().toCharArray(),i+4,khachhang.getDiaChi().length()-i-4);
+            }
+            for (CtTuyenduong item:ctTuyenDuongService.getAll()
+                 ) {
+               if(item.getMaNK().getTenNK().indexOf(s) != -1)
+                   tuyenduong = item.getMaTD();
+            }
+            Hoadonvanchuyen hoadonvanchuyen = new Hoadonvanchuyen();
+            Boolean cod = Boolean.valueOf(request.getParameter("cod"));
+            hoadonvanchuyen.setSoHD("temp");
+            hoadonvanchuyen.setCod(Short.valueOf(cod?"0":"1"));
+            hoadonvanchuyen.setMaKH(khachhang);
+            hoadonvanchuyen.setMaKN(khachnhan);
+            hoadonvanchuyen.setMaTD(tuyenduong);
+            hoadonvanchuyen.setMaLVC(pyc.getMaLVC());
+            hoadonvanchuyen.setNgayLapHD(pyc.getNgayLap());
+            hoadonvanchuyen.setTienVC(BigInteger.valueOf(100000));
+            hoadonvanchuyen.setTongTien(BigInteger.valueOf(100000));
+            hoadonvanchuyen.setMaTT(new Trangthai("TT01"));
+            hoaDonService.Add(hoadonvanchuyen);
+        }
+        else {
+            List<Khachhang> listKH = khachHangService.getAll();
+            List<Loaivanchuyen> listCatagory = loaiVanChuyenService.getAll();
+            model.addAttribute("listLVC", listCatagory);
+        }
         return "Admin/CreateBill";
     }
 
@@ -263,6 +350,15 @@ public class AdminController {
 
     /* Recipients */
 
+<<<<<<< HEAD
+=======
+    @GetMapping("/indexrecipients")
+    public String printIndexRecipients(Model model){
+        model.addAttribute("list",phieuyeucauService.getAll());
+        return "Admin/IndexRecipients";
+    }
+
+>>>>>>> 70c748d687b01cba6edb9391175b7d907afbc723
     @GetMapping("/createrecipients")
     public String printCreateRecipients(){
         return "Admin/CreateRecipients";

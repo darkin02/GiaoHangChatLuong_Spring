@@ -114,7 +114,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/domixi.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/domixi.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Độ Mixi</h6>
                         <small>Streamer</small>
@@ -125,7 +125,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/sontung.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/sontung.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Sơn Tùng MTP</h6>
                         <small>Ca Sĩ</small>
@@ -136,7 +136,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/ngokienhuy.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/ngokienhuy.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Ngô Kiến Huy</h6>
                         <small>Ca Sĩ</small>
@@ -147,7 +147,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/bray.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/bray.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Bray</h6>
                         <small>- Rapper</small>

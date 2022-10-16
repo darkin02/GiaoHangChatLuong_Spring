@@ -71,7 +71,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <img class="img-fluid w-100" src="~/img/feature.jpg" alt="">
+                <img class="img-fluid w-100" src="<c:url value='/Resources/img/feature.jpg'/>" alt="">
             </div>
             <div class="col-lg-7 py-5 py-lg-0">
                 <h6 class="text-primary text-uppercase font-weight-bold">TẠI SAO CHỌN CHÚNG TÔI</h6>
@@ -98,7 +98,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Cuong.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="<c:url value='/Resources/img/Cuong.jpg'/>" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
                             <h5 class="font-weight-bold">Nguyễn Mạnh Cường</h5>
@@ -115,7 +115,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Thinh.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="<c:url value='/Resources/img/Thinh.jpg'/>" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
                             <h5 class="font-weight-bold">Nguyễn Văn Thịnh</h5>
@@ -132,10 +132,10 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Truong.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/307413043_638324684458409_7902304248471513772_n.jpg?stp=dst-jpg_p160x160&_nc_cat=108&ccb=1-7&_nc_sid=aee45a&_nc_ohc=FHUpriAsPfoAX9Okegz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS7FKGHRp___nqHeg0_hyuYAWX5x2GwKiC3wNQRNn8-OQ&oe=6371D8DE" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
-                            <h5 class="font-weight-bold">Nguyễn Nhựt Trường</h5>
+                            <h5 class="font-weight-bold">Trần Trọng Nghĩa</h5>
                             <span>Thành Viên</span>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-primary">
@@ -149,7 +149,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Thuan.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="<c:url value='/Resources/img/Thuan.jpg'/>" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
                             <h5 class="font-weight-bold">Lê Định Thuận</h5>
@@ -168,3 +168,4 @@
     </div>
 </div>
 <!-- Team End -->
+

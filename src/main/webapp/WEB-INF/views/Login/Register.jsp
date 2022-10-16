@@ -40,20 +40,14 @@
   <div class="wrap-input100 validate-input">
     <select name="ls_province" id="ls_province" class="input100" style="
     height: 100%;border:none;"></select>
-    <span class="focus-input100"></span>
-    <span class="label-input100">Tỉnh/Thành phố</span>
   </div>
   <div class="wrap-input100 validate-input">
     <select name="ls_district" class="input100" style="
     height: 100%;border:none;"></select>
-    <span class="focus-input100"></span>
-    <span class="label-input100">Quận/Huyện</span>
   </div>
   <div class="wrap-input100 validate-input">
     <select name="ls_ward" class="input100" style="
     height: 100%;border:none;"></select>
-    <span class="focus-input100"></span>
-    <span class="label-input100">Xã/Phường</span>
   </div>
   <div class="wrap-input100 validate-input" data-validate="">
     <input class="input100" type="text" name="DiaChi" />

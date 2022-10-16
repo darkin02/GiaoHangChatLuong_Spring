@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!-- Header Start -->
-<form action="/GiaoHang/TheoDoi" method="post">
+<form method="post" action="<c:url value='/theodoi'/>">
     <div class="jumbotron jumbotron-fluid mb-5">
         <div class="container text-center py-5">
             <h1 class="text-primary mb-4">An Toàn & Nhanh Chóng</h1>
@@ -17,157 +18,142 @@
             </div>
         </div>
     </div>
-<%--    <!--Don hang-->--%>
-<%--    @{ if (Session["TheoDoi"] != null)--%>
-<%--    {--%>
-<%--    TheoDoi td = (TheoDoi)Session["TheoDoi"];--%>
-<%--    var lst = (List<HanhTrinh>)Session["QuaTrinh"];--%>
-<%--    <button id="theodoi" data-toggle="modal" data-target="#exampleModal" hidden="hidden" type="button"></button>--%>
-<%--    <div class="modal " id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
-<%--        <div class="modal-dialog modal-lg" role="document">--%>
-<%--            <div class="modal-content">--%>
-<%--                <div class="modal-header">--%>
-<%--                    <h5 class="modal-title" id="exampleModalLabel">Đơn hàng</h5>--%>
-<%--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                        <span aria-hidden="true">&times;</span>--%>
-<%--                    </button>--%>
-<%--                </div>--%>
-<%--                <div class="modal-body">--%>
-<%--                    <div class="ThongTin">--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; float: left; height: 250px;">--%>
-<%--                                <div class="card-header ">Người gửi</div>--%>
-<%--                                <div class="card-body">--%>
-<%--                                    <div class="customer">--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <i class="fa fa-user"><span>@td.TenKH</span></i>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <i class="fa fa-phone"><span>@td.SDTKH</span></i>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <i class="fa fa-home"><span>@td.DiaChiKH</span></i>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; height: 250px;">--%>
-<%--                                <div class="card-header">Người nhận</div>--%>
-<%--                                <div class="card-body">--%>
-<%--                                    <div class="customer">--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <i class="fa fa-user"><span>@td.TenKN</span></i>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <i class="fa fa-phone"><span>@td.SDTKN</span></i>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <i class="fa fa-home"><span>@td.DiaChiKN</span></i>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; float: left; height: 250px;">--%>
-<%--                                <div class="card-header ">Thông tin</div>--%>
-<%--                                <div class="card-body">--%>
-<%--                                    <div class="customer">--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <label for="">Mã Khách Hàng:<span>@td.MaKH</span></label>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            <label for="">Tổng tiền:<span>@td.TongTien VNĐ</span></label>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            @if (td.COD)--%>
-<%--                                            {--%>
-<%--                                            <label for="">Thu hộ:<span>Có</span></label> if (!td.TrangThai)--%>
-<%--                                            {--%>
-<%--                                            <div class="item_customer">--%>
-<%--                                                <a class="btn-success" href="@Url.Action("Payment", "GiaoHang", new { @SoTien = td.TongTien })">Thanh Toán</a>--%>
-<%--                                            </div>}--%>
-<%--                                            }--%>
-<%--                                            @if (!td.COD)--%>
-<%--                                            {--%>
-<%--                                            <label for="">Thu hộ:<span>Không</span></label>}--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; float: left; height: 250px;">--%>
-<%--                                <div class="card-header ">Trạng thái đơn hàng</div>--%>
-<%--                                <div class="card-body">--%>
-<%--                                    <div class="customer">--%>
-<%--                                        <div class="item_customer">--%>
-<%--                                            @if (td.TrangThai)--%>
-<%--                                            {--%>
-<%--                                            <label for="">Đã giao</label>}--%>
-<%--                                            @if (!td.TrangThai)--%>
-<%--                                            {--%>
-<%--                                            <label for="">Đang giao</label>}--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="card bg-light mb-3 col-sm-11" style=" float: left;">--%>
-<%--                                <div class="card-header ">Theo dõi đơn hàng</div>--%>
-<%--                                <div class="card-body">--%>
-<%--                                    <div class="customer">--%>
-<%--                                        @foreach (var item in lst)--%>
-<%--                                        {--%>
-<%--                                        <div class="item_theodoi">--%>
-<%--                                            <div class="time" style="float: left;">--%>
-<%--                                                <i class="fa fa-calendar-alt"><span>@item.Time</span></i>--%>
-<%--                                            </div>--%>
-<%--                                            @if (item.SuKien)--%>
-<%--                                            {--%>
-<%--                                            <div class="trangthai">--%>
-<%--                                                Đã đến nhà kho @item.TenNK--%>
-<%--                                            </div>}--%>
-<%--                                            @if (!item.SuKien)--%>
-<%--                                            {--%>
-<%--                                            <div class="trangthai">--%>
-<%--                                                Đã xuất kho @item.TenNK--%>
-<%--                                            </div>}--%>
-<%--                                        </div>}--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+    <!--Don hang-->
+    <c:if test="${sessionScope.get('TheoDoi') ne null}">
+    <button id="theodoi" data-toggle="modal" data-target="#exampleModal" hidden="hidden" type="button"></button>
+    <div class="modal " id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Đơn hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ThongTin">
+                        <div class="row">
+                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; float: left; height: 250px;">
+                                <div class="card-header ">Người gửi</div>
+                                <div class="card-body">
+                                    <div class="customer">
+                                        <div class="item_customer">
+                                            <i class="fa fa-user"><span>${sessionScope.get('TheoDoi').tenKH}</span></i>
+                                        </div>
+                                        <div class="item_customer">
+                                            <i class="fa fa-phone"><span>${sessionScope.get('TheoDoi').SDTKH}</span></i>
+                                        </div>
+                                        <div class="item_customer">
+                                            <i class="fa fa-home"><span>${sessionScope.get('TheoDoi').diaChiKH}</span></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; height: 250px;">
+                                <div class="card-header">Người nhận</div>
+                                <div class="card-body">
+                                    <div class="customer">
+                                        <div class="item_customer">
+                                            <i class="fa fa-user"><span>${sessionScope.get('TheoDoi').tenKN}</span></i>
+                                        </div>
+                                        <div class="item_customer">
+                                            <i class="fa fa-phone"><span>${sessionScope.get('TheoDoi').SDTKN}</span></i>
+                                        </div>
+                                        <div class="item_customer">
+                                            <i class="fa fa-home"><span>${sessionScope.get('TheoDoi').diaChiKN}</span></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; float: left; height: 250px;">
+                                <div class="card-header ">Thông tin</div>
+                                <div class="card-body">
+                                    <div class="customer">
+                                        <div class="item_customer">
+                                            <label >Mã Khách Hàng:<span>${sessionScope.get('TheoDoi').maKH}</span></label>
+                                        </div>
+                                        <div class="item_customer">
+                                            <label >Tổng tiền:<span>${sessionScope.get('TheoDoi').tongTien} VNĐ</span></label>
+                                        </div>
+                                        <div class="item_customer">
+                                            <c:if test="${sessionScope.get('TheoDoi').COD}">
+                                            <label >Thu hộ:<span>Có</span></label><c:if test="${sessionScope.get('TheoDoi').trangThai}">
+                                            <div class="item_customer">
+                                                <a class="btn-success">Thanh Toán</a>
+                                            </div></c:if>
+                                            </c:if>
+                                            <c:if test="${sessionScope.get('TheoDoi').COD == false}">
+                                            <label >Thu hộ:<span>Không</span></label></c:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3 col-sm-6" style="max-width: 18rem; float: left; height: 250px;">
+                                <div class="card-header ">Trạng thái đơn hàng</div>
+                                <div class="card-body">
+                                    <div class="customer">
+                                        <div class="item_customer">
+                                            <c:if test="${sessionScope.get('TheoDoi').trangThai}">
+                                            <label >Đã giao</label> </c:if>
+                                            <c:if test="${sessionScope.get('TheoDoi').trangThai == false}">
+                                            <label >Đang giao</label></c:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light mb-3 col-sm-11" style=" float: left;">
+                                <div class="card-header ">Theo dõi đơn hàng</div>
+                                <div class="card-body">
+                                    <div class="customer">
+                                        <c:forEach var="item" items="${sessionScope.get('QuaTrinh')}">
+                                        <div class="item_theodoi">
+                                            <div class="time" style="float: left;">
+                                                <i class="fa fa-calendar-alt"><span>${item.time}</span></i>
+                                            </div>
+                                            <c:if test="${item.suKien}">
+                                            <div class="trangthai">
+                                                Đã đến nhà kho ${item.tenNK}
+                                            </div></c:if>
+                                            <c:if test="${item.suKien == false}">
+                                            <div class="trangthai">
+                                                Đã xuất kho ${item.tenNK}
+                                            </div></c:if>
+                                        </div></c:forEach>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="modal-footer">--%>
-<%--                    <button type="button" class="btn btn-primary" data-dismiss="modal">Thoát</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div> }--%>
-<%--    if (Session["ErrorTheoDoi"] != null)--%>
-<%--    {--%>
-<%--    <button id="theodoi" data-toggle="modal" data-target="#exampleModal" hidden="hidden" type="button"></button>--%>
-<%--    <div class="modal " id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel">--%>
-<%--        <div class="modal-dialog modal-lg" role="document">--%>
-<%--            <div class="modal-content">--%>
-<%--                <div class="modal-header">--%>
-<%--                    <h5 class="modal-title" id="exampleModalLabel">Đơn hàng</h5>--%>
-<%--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                        <span aria-hidden="true">&times;</span>--%>
-<%--                    </button>--%>
-<%--                </div>--%>
-<%--                <div class="modal-body">--%>
-<%--                    <label style="color:orangered;">@Session["ErrorTheoDoi"]</label>--%>
-<%--                </div>--%>
-<%--                <div class="modal-footer">--%>
-<%--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
-<%--                    <button type="button" class="btn btn-primary">Save changes</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div> } }--%>
-
-<%--    <!--Don hang end-->--%>
-<%--</form>--%>
-
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Thoát</button>
+                </div>
+            </div>
+        </div>
+    </div> </c:if>
+<c:if test="${sessionScope.get('ErrorTheoDoi') ne null}">
+    <button id="theodoi" data-toggle="modal" data-target="#exampleModal" hidden="hidden" type="button"></button>
+    <div class="modal " id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Đơn hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label style="color:orangered;">${sessionScope.get('ErrorTheoDoi')}</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div></c:if>
+</form>
 <!-- Header End -->
 <div class="top-main ">
     <div class="top-main-body">
@@ -294,8 +280,6 @@
             <div class="col-lg-5">
                 <div class="bg-primary py-5 px-4 px-sm-5">
                     <form class="py-5" method="post" action="/GiaoHang/Index">
-                        @model GiaoHangTietKiem.Controllers.Model.BaoGiaModel
-                        @Html.AntiForgeryToken()
                         <div class="form-group">
                             <input type="text" class="form-control border-0 p-4" placeholder="Tên của bạn" required="required" name="TenKH" />
                         </div>
@@ -364,7 +348,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <img class="img-fluid w-100" src="~/img/feature.jpg" alt="">
+                <img class="img-fluid w-100" src="<c:url value='/Resources/img/feature.jpg'/>" alt="">
             </div>
             <div class="col-lg-7 py-5 py-lg-0">
                 <h6 class="text-primary text-uppercase font-weight-bold">TẠI SAO CHỌN CHÚNG TÔI</h6>
@@ -391,7 +375,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Cuong.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="<c:url value='/Resources/img/Cuong.jpg'/>" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
                             <h5 class="font-weight-bold">Nguyễn Mạnh Cường</h5>
@@ -408,7 +392,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Thinh.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="<c:url value='/Resources/img/Thinh.jpg'/>" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
                             <h5 class="font-weight-bold">Nguyễn Văn Thịnh</h5>
@@ -425,10 +409,10 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Truong.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/307413043_638324684458409_7902304248471513772_n.jpg?stp=dst-jpg_p160x160&_nc_cat=108&ccb=1-7&_nc_sid=aee45a&_nc_ohc=FHUpriAsPfoAX9Okegz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS7FKGHRp___nqHeg0_hyuYAWX5x2GwKiC3wNQRNn8-OQ&oe=6371D8DE" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
-                            <h5 class="font-weight-bold">Nguyễn Nhựt Trường</h5>
+                            <h5 class="font-weight-bold">Trần Trọng Nghĩa</h5>
                             <span>Thành Viên</span>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-primary">
@@ -442,7 +426,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-5">
-                    <img class="card-img-top" src="~/img/Thuan.jpg" alt="" style="height : 250px;">
+                    <img class="card-img-top" src="<c:url value='/Resources/img/Thuan.jpg'/>" alt="" style="height : 250px;">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-secondary">
                             <h5 class="font-weight-bold">Lê Định Thuận</h5>
@@ -472,7 +456,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/domixi.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/domixi.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Độ Mixi</h6>
                         <small>Streamer</small>
@@ -483,7 +467,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/sontung.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/sontung.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Sơn Tùng MTP</h6>
                         <small>Ca Sĩ</small>
@@ -494,7 +478,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/ngokienhuy.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/ngokienhuy.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Ngô Kiến Huy</h6>
                         <small>Ca Sĩ</small>
@@ -505,7 +489,7 @@
             <div class="position-relative bg-secondary p-4">
                 <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
                 <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid rounded-circle" src="~/img/bray.jpg" style="width: 60px; height: 60px;" alt="">
+                    <img class="img-fluid rounded-circle" src="<c:url value='/Resources/img/bray.jpg'/>" style="width: 60px; height: 60px;" alt="">
                     <div class="ml-3">
                         <h6 class="font-weight-semi-bold m-0">Bray</h6>
                         <small>- Rapper</small>
@@ -537,7 +521,7 @@
                 <div class="bg-secondary" style="padding: 30px;">
                     <div class="d-flex mb-3">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="~/img/Thuan.jpg" alt="">
+                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="<c:url value='/Resources/img/Thuan.jpg'/>" alt="">
                             <a class="text-muted ml-2" href="">Định Thuận</a>
                         </div>
                         <div class="d-flex align-items-center ml-4">
@@ -562,7 +546,7 @@
                 <div class="bg-secondary" style="padding: 30px;">
                     <div class="d-flex mb-3">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="~/img/Cuong.jpg" alt="">
+                            <img class="rounded-circle" style="width: 40px; height: 40px;" src="<c:url value='/Resources/img/Cuong.jpg'/>" alt="">
                             <a class="text-muted ml-2" href="">Mạnh Cường</a>
                         </div>
                         <div class="d-flex align-items-center ml-4">
