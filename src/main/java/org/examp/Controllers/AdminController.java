@@ -82,6 +82,7 @@ public class AdminController {
         if (session.getAttribute("TaiKhoan") != null)
         {
             String tk = session.getAttribute("TaiKhoan").toString();
+
             Taikhoan tk1 = taiKhoanService.getOne(tk);
             tk1.setTrangThai(Short.valueOf("0"));
 
