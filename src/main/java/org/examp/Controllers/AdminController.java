@@ -4,7 +4,6 @@ import org.examp.Entitys.*;
 import org.examp.Model.CreateBill;
 import org.examp.Model.DangKy;
 import org.examp.Service.*;
-import org.examp.Service.impl.KhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -47,8 +45,6 @@ public class AdminController {
     @Autowired
     private INhanVienService nhanVienService;
 
-<<<<<<< HEAD
-=======
     @Autowired
     private IPhieuyeucauService phieuyeucauService;
 
@@ -66,7 +62,6 @@ public class AdminController {
 
     @Autowired
     private ICtRoleService ctRoleService;
->>>>>>> 70c748d687b01cba6edb9391175b7d907afbc723
     public String md5(String str){
         MessageDigest md;
         String result = "";
@@ -350,15 +345,12 @@ public class AdminController {
 
     /* Recipients */
 
-<<<<<<< HEAD
-=======
     @GetMapping("/indexrecipients")
     public String printIndexRecipients(Model model){
         model.addAttribute("list",phieuyeucauService.getAll());
         return "Admin/IndexRecipients";
     }
 
->>>>>>> 70c748d687b01cba6edb9391175b7d907afbc723
     @GetMapping("/createrecipients")
     public String printCreateRecipients(){
         return "Admin/CreateRecipients";
